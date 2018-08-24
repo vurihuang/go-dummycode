@@ -1,8 +1,7 @@
-package leetcode
+package helper
 
 import (
 	"bytes"
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -51,34 +50,12 @@ func AssertEqual(t *testing.T, actual, expected interface{}, msg ...interface{})
 	if Equal(actual, expected) {
 		return
 	}
-
-	t.Fatal(messageFormatEqual(actual, expected, msg))
+	t.Error(MessageFormatEqual(actual, expected))
 }
 
 func AssertEqualValue(t *testing.T, actual, expected interface{}, msg ...interface{}) {
 	if EqualValue(actual, expected) {
 		return
 	}
-
-	t.Fatal(messageFormatEqual(actual, expected, msg))
-}
-
-func messageFormat(msg ...interface{}) string {
-	if len(msg) == 1 {
-		return msg[0].(string)
-	}
-	if len(msg) > 1 {
-		return fmt.Sprintf(msg[0].(string), msg[1:]...)
-	}
-	return ""
-}
-
-func messageFormatEqual(actual, expected interface{}, msg ...interface{}) string {
-	message := ""
-	if msg == nil || len(msg) == 0 {
-		message = fmt.Sprintf("%v != %v", actual, expected)
-	} else {
-		message = messageFormat(msg)
-	}
-	return message
+	t.Error(MessageFormatEqual(actual, expected))
 }

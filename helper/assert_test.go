@@ -1,8 +1,6 @@
-package leetcode
+package helper
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestEqual(t *testing.T) {
 	if !Equal(nil, nil) {
@@ -43,26 +41,5 @@ func TestEqualValue(t *testing.T) {
 	}
 	if EqualValue([]byte{'a'}, 'a') {
 		t.Error("EqualValue should return false")
-	}
-}
-
-func TestMessageFormat(t *testing.T) {
-	if !Equal(messageFormat(), "") {
-		t.Error("MessageFormat should return true")
-	}
-	if !Equal(messageFormat("a"), "a") {
-		t.Error("MessageFormat should return true")
-	}
-	if !Equal(messageFormat("%s-%s-%s", "a", "b", "c"), "a-b-c") {
-		t.Error("MessageFormat should return true")
-	}
-	if Equal(messageFormat(), nil) {
-		t.Error("MessageFormat should return false")
-	}
-	if Equal(messageFormat("."), "z") {
-		t.Error("MessageFormat should return false")
-	}
-	if Equal(messageFormat("a", "b"), "ab") {
-		t.Error("MessageFormat should return false")
 	}
 }
